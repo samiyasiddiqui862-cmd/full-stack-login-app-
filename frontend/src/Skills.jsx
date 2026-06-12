@@ -16,14 +16,14 @@ function Skills() {
   }, [])
 
   const fetchSkills = async () => {
-    const res = await axios.get("http://localhost:5000/skills", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/skills", { headers: { authorization: token } })
     setSkills(res.data)
   }
 
   const handleAdd = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:5000/skills", { name }, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/skills", { name }, { headers: { authorization: token } })
       setName("")
       fetchSkills()
     } catch (err) { alert("Error adding skill") }
@@ -31,7 +31,7 @@ function Skills() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/skills/${id}`, { headers: { authorization: token } })
+      await axios.delete(`https://full-stack-login-app-34nv.onrender.com/skills/${id}`, { headers: { authorization: token } })
       fetchSkills()
     } catch (err) { alert("Error deleting") }
   }

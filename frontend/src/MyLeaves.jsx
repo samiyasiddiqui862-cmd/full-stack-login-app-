@@ -9,7 +9,7 @@ function MyLeaves() {
 
   useEffect(() => {
     if (!token) { navigate("/"); return }
-    axios.get("http://localhost:5000/my-leaves", { headers: { authorization: token } })
+    axios.get("https://full-stack-login-app-34nv.onrender.com/my-leaves", { headers: { authorization: token } })
       .then(res => setLeaves(res.data))
   }, [])
 

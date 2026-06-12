@@ -9,7 +9,7 @@ function AuditLogs() {
 
   useEffect(() => {
     if (!token) { navigate("/"); return }
-    axios.get("http://localhost:5000/audit-logs", { headers: { authorization: token } })
+    axios.get("https://full-stack-login-app-34nv.onrender.com/audit-logs", { headers: { authorization: token } })
       .then(res => setLogs(res.data))
   }, [])
 

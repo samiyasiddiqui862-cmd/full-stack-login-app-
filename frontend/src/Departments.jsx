@@ -16,14 +16,14 @@ function Departments() {
   }, [])
 
   const fetchDepartments = async () => {
-    const res = await axios.get("http://localhost:5000/departments", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/departments", { headers: { authorization: token } })
     setDepartments(res.data)
   }
 
   const handleAdd = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:5000/departments", { name }, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/departments", { name }, { headers: { authorization: token } })
       setName("")
       fetchDepartments()
     } catch (err) { alert("Error adding department") }
@@ -31,7 +31,7 @@ function Departments() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/departments/${id}`, { headers: { authorization: token } })
+      await axios.delete(`https://full-stack-login-app-34nv.onrender.com/departments/${id}`, { headers: { authorization: token } })
       fetchDepartments()
     } catch (err) { alert("Error deleting") }
   }

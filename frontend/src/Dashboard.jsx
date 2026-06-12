@@ -23,14 +23,14 @@ function Dashboard() {
 
   const fetchStats = async (token) => {
     try {
-      const res = await axios.get("http://localhost:5000/stats", { headers: { authorization: token } })
+      const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/stats", { headers: { authorization: token } })
       setStats(res.data)
     } catch (err) { console.log(err) }
   }
 
   const fetchSalaryStats = async (token) => {
     try {
-      const res = await axios.get("http://localhost:5000/salary/stats", { headers: { authorization: token } })
+      const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/salary/stats", { headers: { authorization: token } })
       setSalaryStats(res.data)
     } catch (err) { console.log(err) }
   }

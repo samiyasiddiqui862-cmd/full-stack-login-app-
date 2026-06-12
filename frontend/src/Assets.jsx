@@ -23,19 +23,19 @@ function Assets() {
   }, [])
 
   const fetchAssets = async () => {
-    const res = await axios.get("http://localhost:5000/assets", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/assets", { headers: { authorization: token } })
     setAssets(res.data)
   }
 
   const fetchEmployees = async () => {
-    const res = await axios.get("http://localhost:5000/employees", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/employees", { headers: { authorization: token } })
     setEmployees(res.data.employees || res.data)
   }
 
   const handleAdd = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:5000/assets", { name, type, serial_number: serial }, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/assets", { name, type, serial_number: serial }, { headers: { authorization: token } })
       setName(""); setType(""); setSerial(""); setShowForm(false)
       fetchAssets()
     } catch (err) { alert("Error adding asset") }
@@ -44,7 +44,7 @@ function Assets() {
   const handleAssign = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:5000/assets/assign", { asset_id: selectedAsset, employee_id: selectedEmployee, notes }, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/assets/assign", { asset_id: selectedAsset, employee_id: selectedEmployee, notes }, { headers: { authorization: token } })
       setSelectedAsset(""); setSelectedEmployee(""); setNotes(""); setShowAssign(false)
       fetchAssets()
       alert("Asset assigned!")
@@ -53,7 +53,7 @@ function Assets() {
 
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this asset?")) return
-    await axios.delete(`http://localhost:5000/assets/${id}`, { headers: { authorization: token } })
+    await axios.delete(`https://full-stack-login-app-34nv.onrender.com/assets/${id}`, { headers: { authorization: token } })
     fetchAssets()
   }
 

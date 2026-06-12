@@ -14,7 +14,7 @@ function LeaveApply() {
 
   useEffect(() => {
     if (!token) { navigate("/"); return }
-    axios.get("http://localhost:5000/leave-types", { headers: { authorization: token } })
+    axios.get("https://full-stack-login-app-34nv.onrender.com/leave-types", { headers: { authorization: token } })
       .then(res => setLeaveTypes(res.data))
   }, [])
 
@@ -22,7 +22,7 @@ function LeaveApply() {
     e.preventDefault()
     setLoading(true)
     try {
-      await axios.post("http://localhost:5000/leave-apply", { leave_type_id: leaveTypeId, start_date: startDate, end_date: endDate, reason }, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/leave-apply", { leave_type_id: leaveTypeId, start_date: startDate, end_date: endDate, reason }, { headers: { authorization: token } })
       alert("Leave applied successfully!")
       navigate("/my-leaves")
     } catch (err) { alert("Error applying leave") }

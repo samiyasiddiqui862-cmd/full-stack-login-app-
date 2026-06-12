@@ -18,21 +18,21 @@ function Attendance() {
   }, [])
 
   const fetchMyAttendance = async () => {
-    const res = await axios.get("http://localhost:5000/attendance/my", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/attendance/my", { headers: { authorization: token } })
     setAttendance(res.data)
     const today = res.data.find(a => a.date === new Date().toISOString().split("T")[0])
     setTodayRecord(today)
   }
 
   const fetchAllAttendance = async () => {
-    const res = await axios.get("http://localhost:5000/attendance/all", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/attendance/all", { headers: { authorization: token } })
     setAllAttendance(res.data)
   }
 
   const handleCheckIn = async () => {
     setLoading(true)
     try {
-      await axios.post("http://localhost:5000/attendance/checkin", {}, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/attendance/checkin", {}, { headers: { authorization: token } })
       alert("✅ Checked in successfully!")
       fetchMyAttendance()
     } catch (err) { alert("Error checking in") }
@@ -42,7 +42,7 @@ function Attendance() {
   const handleCheckOut = async () => {
     setLoading(true)
     try {
-      await axios.post("http://localhost:5000/attendance/checkout", {}, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/attendance/checkout", {}, { headers: { authorization: token } })
       alert("✅ Checked out successfully!")
       fetchMyAttendance()
     } catch (err) { alert("Error checking out") }

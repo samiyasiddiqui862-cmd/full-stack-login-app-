@@ -15,17 +15,17 @@ function AllLeaves() {
   }, [])
 
   const fetchLeaves = async () => {
-    const res = await axios.get("http://localhost:5000/all-leaves", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/all-leaves", { headers: { authorization: token } })
     setLeaves(res.data)
   }
 
   const handleManagerAction = async (id, status) => {
-    await axios.put(`http://localhost:5000/leave-manager/${id}`, { status }, { headers: { authorization: token } })
+    await axios.put(`https://full-stack-login-app-34nv.onrender.com/leave-manager/${id}`, { status }, { headers: { authorization: token } })
     fetchLeaves()
   }
 
   const handleHRAction = async (id, status) => {
-    await axios.put(`http://localhost:5000/leave-hr/${id}`, { status }, { headers: { authorization: token } })
+    await axios.put(`https://full-stack-login-app-34nv.onrender.com/leave-hr/${id}`, { status }, { headers: { authorization: token } })
     fetchLeaves()
   }
 

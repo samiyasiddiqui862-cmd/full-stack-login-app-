@@ -26,17 +26,17 @@ function EmployeeForm() {
   }, [])
 
   const fetchDepartments = async () => {
-    const res = await axios.get("http://localhost:5000/departments", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/departments", { headers: { authorization: token } })
     setDepartments(res.data)
   }
 
   const fetchSkills = async () => {
-    const res = await axios.get("http://localhost:5000/skills", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/skills", { headers: { authorization: token } })
     setSkills(res.data)
   }
 
   const fetchEmployee = async () => {
-    const res = await axios.get(`http://localhost:5000/employees/${id}`, { headers: { authorization: token } })
+    const res = await axios.get(`https://full-stack-login-app-34nv.onrender.com/employees/${id}`, { headers: { authorization: token } })
     const emp = res.data
     setName(emp.name)
     setEmail(emp.email)
@@ -65,10 +65,10 @@ function EmployeeForm() {
 
     try {
       if (id) {
-        await axios.put(`http://localhost:5000/employees/${id}`, formData, { headers: { authorization: token } })
+        await axios.put(`https://full-stack-login-app-34nv.onrender.com/employees/${id}`, formData, { headers: { authorization: token } })
         alert("Employee updated!")
       } else {
-        await axios.post("http://localhost:5000/employees", formData, { headers: { authorization: token } })
+        await axios.post("https://full-stack-login-app-34nv.onrender.com/employees", formData, { headers: { authorization: token } })
         alert("Employee added!")
       }
       navigate("/employees")

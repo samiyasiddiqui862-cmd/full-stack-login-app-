@@ -23,17 +23,17 @@ function Salary() {
   }, [])
 
   const fetchSalaries = async () => {
-    const res = await axios.get("http://localhost:5000/salary", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/salary", { headers: { authorization: token } })
     setSalaries(res.data)
   }
 
   const fetchEmployees = async () => {
-    const res = await axios.get("http://localhost:5000/employees", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/employees", { headers: { authorization: token } })
     setEmployees(res.data.employees || res.data)
   }
 
   const fetchStats = async () => {
-    const res = await axios.get("http://localhost:5000/salary/stats", { headers: { authorization: token } })
+    const res = await axios.get("https://full-stack-login-app-34nv.onrender.com/salary/stats", { headers: { authorization: token } })
     setStats(res.data)
   }
 
@@ -53,7 +53,7 @@ function Salary() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:5000/salary", form, { headers: { authorization: token } })
+      await axios.post("https://full-stack-login-app-34nv.onrender.com/salary", form, { headers: { authorization: token } })
       alert("Salary added successfully!")
       setShowForm(false)
       setCalculated(null)

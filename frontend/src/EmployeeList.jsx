@@ -21,7 +21,7 @@ function EmployeeList() {
   const fetchEmployees = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/employees?page=${page}&limit=${limit}&search=${search}`,
+        `https://full-stack-login-app-34nv.onrender.com/employees?page=${page}&limit=${limit}&search=${search}`,
         { headers: { authorization: token } }
       )
       setEmployees(res.data.employees || res.data)
@@ -32,7 +32,7 @@ function EmployeeList() {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure?")) return
     try {
-      await axios.delete(`http://localhost:5000/employees/${id}`, { headers: { authorization: token } })
+      await axios.delete(`https://full-stack-login-app-34nv.onrender.com/employees/${id}`, { headers: { authorization: token } })
       fetchEmployees()
     } catch (err) { alert("Error deleting employee") }
   }

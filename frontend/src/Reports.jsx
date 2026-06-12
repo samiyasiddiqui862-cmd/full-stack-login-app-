@@ -31,12 +31,12 @@ function Reports() {
     setLoading(true)
     try {
       const [emp, leave, asset, salary, skills, dept] = await Promise.all([
-        axios.get("http://localhost:5000/reports/employees", { headers: { authorization: token } }),
-        axios.get("http://localhost:5000/reports/leaves", { headers: { authorization: token } }),
-        axios.get("http://localhost:5000/reports/assets", { headers: { authorization: token } }),
-        axios.get("http://localhost:5000/reports/salary", { headers: { authorization: token } }),
-        axios.get("http://localhost:5000/skills", { headers: { authorization: token } }),
-        axios.get("http://localhost:5000/departments", { headers: { authorization: token } }),
+        axios.get("https://full-stack-login-app-34nv.onrender.com/reports/employees", { headers: { authorization: token } }),
+        axios.get("https://full-stack-login-app-34nv.onrender.com/reports/leaves", { headers: { authorization: token } }),
+        axios.get("https://full-stack-login-app-34nv.onrender.com/reports/assets", { headers: { authorization: token } }),
+        axios.get("https://full-stack-login-app-34nv.onrender.com/reports/salary", { headers: { authorization: token } }),
+        axios.get("https://full-stack-login-app-34nv.onrender.com/skills", { headers: { authorization: token } }),
+        axios.get("https://full-stack-login-app-34nv.onrender.com/departments", { headers: { authorization: token } }),
       ])
       setEmployeeData(emp.data)
       setLeaveData(leave.data)
