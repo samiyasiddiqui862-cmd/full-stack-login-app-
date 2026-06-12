@@ -2,8 +2,8 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-// Configured exactly to hit your root Render server endpoint
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://full-stack-login-app-34nv.onrender.com"
+// Hardcoded live Render URL to guarantee Vercel hits your production server
+const API_BASE_URL = "https://full-stack-login-app-34nv.onrender.com"
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true)
