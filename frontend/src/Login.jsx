@@ -2,7 +2,7 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
-// Dynamic API Base URL configuration
+// Configured exactly to hit your root Render server endpoint
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://full-stack-login-app-34nv.onrender.com"
 
 function Login() {
@@ -39,14 +39,12 @@ function Login() {
     }
     try {
       if (isLogin) {
-        // FIXED: Dynamically calls the Render backend URL instead of localhost
         const res = await axios.post(`${API_BASE_URL}/login`, { email, password })
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("userName", res.data.name)
         localStorage.setItem("userRole", res.data.role)
         navigate("/dashboard")
       } else {
-        // FIXED: Dynamically calls the Render backend URL instead of localhost
         await axios.post(`${API_BASE_URL}/signup`, { name, email, password, role })
         setSuccess("Account created successfully! Please login.")
         setIsLogin(true)
@@ -104,7 +102,6 @@ function Login() {
       background: "linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
       display: "flex", fontFamily: "'Segoe UI', sans-serif"
     }}>
-      {/* Left Side - Branding */}
       <div style={{
         flex: 1, display: "flex", flexDirection: "column",
         justifyContent: "center", alignItems: "center",
@@ -154,7 +151,6 @@ function Login() {
         </div>
       </div>
 
-      {/* Right Side - Form */}
       <div style={{
         width: "500px", display: "flex", alignItems: "center",
         justifyContent: "center", padding: "40px",
