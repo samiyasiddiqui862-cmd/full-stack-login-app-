@@ -1,6 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
 
+// Dynamic API Base URL configuration
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://full-stack-login-app-34nv.onrender.com"
+
 function Signup() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -9,7 +12,8 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault()
     try {
-      const res = await axios.post("http://localhost:5000/signup", {
+      // FIXED: Dynamically calls the Render backend URL instead of localhost
+      const res = await axios.post(`${API_BASE_URL}/signup`, {
         name,
         email,
         password,

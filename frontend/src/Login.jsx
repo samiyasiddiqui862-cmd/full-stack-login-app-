@@ -2,6 +2,9 @@ import { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
+// Dynamic API Base URL configuration
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://full-stack-login-app-34nv.onrender.com"
+
 function Login() {
   const [isLogin, setIsLogin] = useState(true)
   const [name, setName] = useState("")
@@ -36,13 +39,15 @@ function Login() {
     }
     try {
       if (isLogin) {
-        const res = await axios.post("http://localhost:5000/login", { email, password })
+        // FIXED: Dynamically calls the Render backend URL instead of localhost
+        const res = await axios.post(`${API_BASE_URL}/login`, { email, password })
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("userName", res.data.name)
         localStorage.setItem("userRole", res.data.role)
         navigate("/dashboard")
       } else {
-        await axios.post("http://localhost:5000/signup", { name, email, password, role })
+        // FIXED: Dynamically calls the Render backend URL instead of localhost
+        await axios.post(`${API_BASE_URL}/signup`, { name, email, password, role })
         setSuccess("Account created successfully! Please login.")
         setIsLogin(true)
         setName(""); setEmail(""); setPassword(""); setConfirmPassword("")
@@ -109,7 +114,6 @@ function Login() {
         <div style={{ position: "absolute", bottom: "-100px", right: "-100px", width: "400px", height: "400px", borderRadius: "50%", background: "rgba(118,75,162,0.15)", filter: "blur(60px)" }} />
 
         <div style={{ position: "relative", zIndex: 1, textAlign: "center", maxWidth: "500px" }}>
-          {/* SVG Logo */}
           <div style={{ width: "120px", height: "120px", margin: "0 auto 25px" }}>
             <TalentCoreLogo />
           </div>
@@ -122,7 +126,6 @@ function Login() {
 
           <p style={{ color: "rgba(255,255,255,0.5)", fontSize: "12px", letterSpacing: "4px", textTransform: "uppercase", margin: "0 0 40px" }}>Enterprise Management System</p>
 
-          {/* Feature List */}
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", textAlign: "left" }}>
             {[
               { icon: "👥", text: "Complete Employee Management" },
@@ -171,7 +174,6 @@ function Login() {
             </p>
           </div>
 
-          {/* Toggle */}
           <div style={{ display: "flex", background: "rgba(255,255,255,0.05)", borderRadius: "12px", padding: "4px", marginBottom: "25px", border: "1px solid rgba(255,255,255,0.1)" }}>
             <button onClick={() => { setIsLogin(true); setError(""); setSuccess("") }} style={{ flex: 1, padding: "10px", border: "none", borderRadius: "9px", cursor: "pointer", fontWeight: "bold", fontSize: "14px", background: isLogin ? "linear-gradient(135deg, #667eea, #764ba2)" : "transparent", color: "white", boxShadow: isLogin ? "0 4px 15px rgba(102,126,234,0.4)" : "none" }}>🔑 Login</button>
             <button onClick={() => { setIsLogin(false); setError(""); setSuccess("") }} style={{ flex: 1, padding: "10px", border: "none", borderRadius: "9px", cursor: "pointer", fontWeight: "bold", fontSize: "14px", background: !isLogin ? "linear-gradient(135deg, #667eea, #764ba2)" : "transparent", color: "white", boxShadow: !isLogin ? "0 4px 15px rgba(102,126,234,0.4)" : "none" }}>✨ Sign Up</button>
